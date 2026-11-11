@@ -1,10 +1,27 @@
-def fibonacci(n):
-    a = 0
-    b = 1
+# Array (List) Example in Python
 
-    for i in range(n):
-        print(a, end=" ")
-        a, b = b, a + b
+numbers = [10, 20, 30, 40, 50]
 
-num = int(input("Enter the number of terms: "))
-fibonacci(num)
+# Print whole array
+print("Array:", numbers)
+
+# Access elements
+print("First element:", numbers[0])
+print("Second element:", numbers[1])
+
+# Add element
+numbers.append(60)
+print("After append:", numbers)
+
+# Update element
+numbers[2] = 35
+print("After update:", numbers)
+
+# Remove element
+numbers.remove(40)
+print("After remove:", numbers)
+
+# Loop through array
+print("All elements:")
+for num in numbers:
+    print(num)
