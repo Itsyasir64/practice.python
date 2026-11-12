@@ -1,27 +1,25 @@
-# Array (List) Example in Python
+from geopy.geocoders import Nominatim
+import math
 
-numbers = [10, 20, 30, 40, 50]
+def get_qibla_by_city(city_name: str):
+    geolocator = Nominatim(user_agent="qibla_finder_app")
+    location = geolocator.geocode(city_name)
+    
+    if not location:
+        return "Location not found."
+    
+    # Kaaba coordinates
+    kaaba_lat = math.radians(21.422487)
+    kaaba_lon = math.radians(39.826206)
+    
+    user_lat = math.radians(location.latitude)
+    user_lon = math.radians(location.longitude)
+    delta_lon = kaaba_lon - user_lon
+    
+    y = math.sin(delta_lon)
+    x = math.cos(user_lat) * math.tan(kaaba_lat) - math.sin(user_lat) * math.cos(delta_lon)
+    
+    bearing = (math.degrees(math.atan2(y, x)) + 360) % 360
+    return f"{location.address}\nQibla Direction: {bearing:.2f}° from True North"
 
-# Print whole array
-print("Array:", numbers)
-
-# Access elements
-print("First element:", numbers[0])
-print("Second element:", numbers[1])
-
-# Add element
-numbers.append(60)
-print("After append:", numbers)
-
-# Update element
-numbers[2] = 35
-print("After update:", numbers)
-
-# Remove element
-numbers.remove(40)
-print("After remove:", numbers)
-
-# Loop through array
-print("All elements:")
-for num in numbers:
-    print(num)
+print(get_qibla_by_city("Lahore, Pakistan"))
