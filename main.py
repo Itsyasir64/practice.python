@@ -1,12 +1,14 @@
-def find_largest(numbers):
-    largest = numbers[0]
+def second_largest(numbers):
+    largest = second = float('-inf')
 
     for num in numbers:
         if num > largest:
+            second = largest
             largest = num
+        elif num > second and num != largest:
+            second = num
 
-    return largest
+    return second
 
-
-nums = [12, 45, 7, 89, 23]
-print("Largest number:", find_largest(nums))
+nums = [10, 20, 4, 45, 99]
+print("Second largest:", second_largest(nums))
