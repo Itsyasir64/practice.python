@@ -1,14 +1,14 @@
-def second_largest(numbers):
-    largest = second = float('-inf')
 
-    for num in numbers:
-        if num > largest:
-            second = largest
-            largest = num
-        elif num > second and num != largest:
-            second = num
+import sympy as sp
 
-    return second
+# Define variable
+x = sp.Symbol('x')
 
-nums = [10, 20, 4, 45, 99]
-print("Second largest:", second_largest(nums))
+# Define function
+f = x**2 + 3*x + 2
+
+# Calculate integration
+result = sp.integrate(f, (x, 0, 2))
+
+print("Integration result:", result)
+print("Decimal result:", result.evalf())
