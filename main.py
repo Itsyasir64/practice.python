@@ -1,14 +1,10 @@
+def reverse_string(text):
+    reversed_text = ""
 
-import sympy as sp
+    for char in text:
+        reversed_text = char + reversed_text
 
-# Define variable
-x = sp.Symbol('x')
+    return reversed_text
 
-# Define function
-f = x**2 + 3*x + 2
-
-# Calculate integration
-result = sp.integrate(f, (x, 0, 2))
-
-print("Integration result:", result)
-print("Decimal result:", result.evalf())
+word = input("Enter a string: ")
+print("Reversed string:", reverse_string(word))
